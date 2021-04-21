@@ -2,6 +2,7 @@
 const React = require('react');
 const {Text, Box} = require('ink');
 const {loremIpsum} = require('lorem-ipsum');
+const useWindowSize = require('./hooks/useWindowSize');
 
 const Paragraphs = ({ count = 10 }) => {
   const raw = loremIpsum({
@@ -17,12 +18,15 @@ const Paragraphs = ({ count = 10 }) => {
   )
 }
 
-const App = ({height = 25}) => (
-	<Box width={80} height={height}>
+const App = ({}) => {
+	const size = useWindowSize()
+		return (
+			<Box width={80} height={size.height}>
         <Box width={80}>
-          <Paragraphs count={100} />
+          <Paragraphs count={20000} />
         </Box>
-    </Box>
-);
+		  </Box>
+		)
+}
 
 module.exports = App;
